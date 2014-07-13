@@ -1,0 +1,151 @@
+﻿<!DOCTYPE HTML>
+<html>
+    <head>
+        <title>nativeDroid - Theme for jQuery Mobile</title>
+		
+		 <meta name="content type"  content="text/html;" http-equiv="content-type" charset="utf-8">
+		
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+		
+		<!-- FontAwesome - http://fortawesome.github.io/Font-Awesome/ -->
+        <link rel="stylesheet" href="css/font-awesome.min.css" />
+
+		<!-- jQueryMobileCSS - original without styling -->
+		<link rel="stylesheet" href="http://code.jquery.com/mobile/1.4.2/jquery.mobile-1.4.2.min.css" />
+
+		<!-- nativeDroid core CSS -->
+        <link rel="stylesheet" href="css/jquerymobile.nativedroid.css" />
+
+		<!-- nativeDroid: Light/Dark -->
+        <link rel="stylesheet" href="css/jquerymobile.nativedroid.dark.css"  id='jQMnDTheme' />
+
+		<!-- nativeDroid: Color Schemes -->
+        <link rel="stylesheet" href="css/jquerymobile.nativedroid.color.green.css" id='jQMnDColor' />
+
+		<!-- jQuery / jQueryMobile Scripts -->
+		<script src="http://code.jquery.com/jquery-1.9.1.min.js"></script>
+        <script src="http://code.jquery.com/mobile/1.4.2/jquery.mobile-1.4.2.min.js"></script>
+
+		<!-- Extras for: Cards.html -->
+	    <script src="https://maps.googleapis.com/maps/api/js?v=3.exp&sensor=false"></script>
+
+		
+		
+		<!-- nativeDroid core CSS -->
+        <link rel="stylesheet" href="css/style.css" />
+		
+
+		
+		
+	<script type="text/javascript">
+
+
+	</script>	
+ 
+    </head>
+   <body>
+
+
+	<div id='map-canvas'></div>
+
+    <div data-role="page" data-theme='b'>
+ <script type="text/javascript">
+     	$(function(){
+	
+//recibir variable idvernoticia
+     
+        var idNoticia=sessionStorage.idVerNoticia;
+//		idNoticia="holaa";
+
+        /** Una vez obtenido el ID de noticia hacemos lo necesario para cargar los datos de la noticia **/
+     
+ 	
+	
+	
+	
+	
+	
+// en arrGET tenemos la variable... la id del contenido
+// ahora construimos la url .php
+	
+	var urlphp ="http://msnzapps.com/coleccion/kamasutra/phpcalls/php_kamasutra_ver.php?Idcard=";
+	var urlphp = urlphp + idNoticia;
+
+//
+	
+	
+		$.get( urlphp, function( data ) {
+		
+			var Img1=data.Imagen1;
+			var Tit1=data.Titulo1;
+			var Txt1=data.Texto1;
+		
+		 document.getElementById("titulo1").innerHTML = Tit1;
+		 document.getElementById("idimg1").src = Img1;		
+		 document.getElementById("txtt1").innerHTML = Txt1;
+			
+		
+		
+		}, "json" );
+
+	  });
+	  
+
+ 
+</script> 
+
+		   
+
+
+
+		<div data-role="header" data-position="fixed" data-tap-toggle="false" data-theme='b'>
+            <a href="index.html" data-ajax="false"><i class='fa fa-bars'></i></a>
+            <h1>Cards</h1>
+        </div>
+        
+        <div data-role="content">   
+
+
+			<ul data-nativedroid-plugin='cards'>
+	
+				<li data-cards-type='text'>
+				
+					<h1 id="titulo1"></h1>
+					<div id="card_separador"></div>
+					<br>
+					<div id="card_imagen"><img id="idimg1" src=""></div>	
+					<p id="txtt1"></p>
+
+				</li>
+							
+
+			</ul>
+
+	        
+        </div>
+		
+		
+		
+		<div data-position="fixed" data-tap-toggle="false" data-role="footer" data-tap-toggle="false" data-theme='b'>
+			<div data-role="navbar">
+				<ul>
+					<li><a href="index.html"><i class='blIcon fa fa-cogs'></i>home</a></li>
+					<li><a href="#"><i class='blIcon fa fa-map-marker'></i>locate</a></li>
+					<li><a href="#"><i class='blIcon fa fa-share'></i>share it!</a></li>
+				</ul>
+			</div>
+		</div>
+		
+		
+
+		
+
+    </div>
+
+
+
+    <script src="js/nativedroid.script.js"></script>
+
+
+  </body>
+</html>

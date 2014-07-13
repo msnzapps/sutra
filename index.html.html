@@ -1,0 +1,243 @@
+<!DOCTYPE HTML>
+<html>
+    <head>
+        <title>nativeDroid - Theme for jQuery Mobile</title>
+		
+		 <meta name="content type"  content="text/html;" http-equiv="content-type" charset="utf-8">
+		
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+		
+		<!-- FontAwesome - http://fortawesome.github.io/Font-Awesome/ -->
+        <link rel="stylesheet" href="css/font-awesome.min.css" />
+
+		<!-- jQueryMobileCSS - original without styling -->
+		<link rel="stylesheet" href="http://code.jquery.com/mobile/1.4.2/jquery.mobile-1.4.2.min.css" />
+
+		<!-- nativeDroid core CSS -->
+        <link rel="stylesheet" href="css/jquerymobile.nativedroid.css" />
+
+		<!-- nativeDroid: Light/Dark -->
+        <link rel="stylesheet" href="css/jquerymobile.nativedroid.dark.css"  id='jQMnDTheme' />
+
+		<!-- nativeDroid: Color Schemes -->
+        <link rel="stylesheet" href="css/jquerymobile.nativedroid.color.green.css" id='jQMnDColor' />
+
+		<!-- jQuery / jQueryMobile Scripts -->
+		<script src="http://code.jquery.com/jquery-1.9.1.min.js"></script>
+        <script src="http://code.jquery.com/mobile/1.4.2/jquery.mobile-1.4.2.min.js"></script>
+
+		<!-- Extras for: Cards.html -->
+	    <script src="https://maps.googleapis.com/maps/api/js?v=3.exp&sensor=false"></script>
+
+		
+		
+		<!-- nativeDroid core CSS -->
+        <link rel="stylesheet" href="css/style.css" />
+		
+
+		
+		
+	<script type="text/javascript">
+	$(function(){
+	
+	
+		
+	//esto es para leer una variable pasada por url (desde el link decidimos que tarjeta mostrar)
+	//http://dominio/pagina.html?valor1&valor2  ejemplo
+	
+	  var cadGET = location.search.substr(1,location.search.length);
+	  var arrGET = cadGET.split("&");
+// en arrGET tenemos la variable... la id del contenido
+// ahora construimos la url .php
+	
+	var urlphp ="http://msnzapps.com/coleccion/kamasutra/phpcalls/php_kamasutra_ver_todas.php?pag=";
+	var urlphp = urlphp + arrGET;
+	
+	
+		$.get( urlphp, function( data ) {
+		
+			var Img1=data.Imagen1;
+			var Tit1=data.Titulo1;
+			var Txt1=data.Texto1;
+			var Idd1=data.Id1;
+			
+			var Img2=data.Imagen2;
+			var Tit2=data.Titulo2;
+			var Txt2=data.Texto2;
+			var Idd2=data.Id2;			
+			
+
+			var Img3=data.Imagen3;
+			var Tit3=data.Titulo3;
+			var Txt3=data.Texto3;
+			var Idd3=data.Id3;			
+			
+
+			var Img4=data.Imagen4;
+			var Tit4=data.Titulo4;
+			var Txt4=data.Texto4;
+			var Idd4=data.Id4;			
+
+			var Img5=data.Imagen5;
+			var Tit5=data.Titulo5;
+			var Txt5=data.Texto5;
+			var Idd5=data.Id5;			
+
+			var Img6=data.Imagen6;
+			var Tit6=data.Titulo6;
+			var Txt6=data.Texto6;
+			var Idd6=data.Id6;			
+
+		var direccionurl1="sessionStorage.idVerNoticia='";
+		var direccionurl2="';";
+			
+			
+		 document.getElementById("titulo1").innerHTML = Tit1;
+		 document.getElementById("idimg1").src = Img1;		
+		 document.getElementById("txtt1").innerHTML = Txt1;
+		 document.getElementById("link1").onclick = direccionurl1 + Idd1 + direccionurl2;		 
+		 
+
+		 document.getElementById("titulo2").innerHTML = Tit2;
+		 document.getElementById("idimg2").src = Img2;		
+		 document.getElementById("txtt2").innerHTML = Txt2;		 
+		 document.getElementById("link2").href =  direccionurl + Idd2;
+		 
+		 document.getElementById("titulo3").innerHTML = Tit3;
+		 document.getElementById("idimg3").src = Img3;		
+		 document.getElementById("txtt3").innerHTML = Txt3;
+		 document.getElementById("link3").href =  direccionurl + Idd3;		 
+		 
+		 document.getElementById("titulo4").innerHTML = Tit4;
+		 document.getElementById("idimg4").src = Img4;		
+		 document.getElementById("txtt4").innerHTML = Txt4;	
+		 document.getElementById("link4").href =  direccionurl + Idd4;		 
+		 
+		 document.getElementById("titulo5").innerHTML = Tit5;
+		 document.getElementById("idimg5").src = Img5;		
+		 document.getElementById("txtt5").innerHTML = Txt5;	
+		 document.getElementById("link5").href =  direccionurl + Idd5;		 
+
+		 document.getElementById("titulo6").innerHTML = Tit6;
+		 document.getElementById("idimg6").src = Img6;		
+		 document.getElementById("txtt6").innerHTML = Txt6;	
+		 document.getElementById("link6").href =  direccionurl + Idd6;		 
+		 
+
+	
+		 		 
+		}, "json" );
+
+	  });
+
+	</script>	
+    </head>
+    <body>
+
+	<div id='map-canvas'></div>
+        
+    <div data-role="page" data-theme='b'>
+
+
+        <div data-role="header" data-position="fixed" data-tap-toggle="false" data-theme='b'>
+            <a href="index.html" data-ajax="false"><i class='fa fa-bars'></i></a>
+            <h1>Cards</h1>
+        </div>
+        
+        <div data-role="content">   
+
+<br>
+			
+			
+	    <ul data-role="listview" data-inset="false" data-icon="false" data-divider-theme="b">
+<a href="ver_una.html" onclick="sessionStorage.idVerNoticia='12';" data-role="button"> Ver noticia 12    </a>
+            <li id="li1" style="">
+
+			<a id="link1" href="ver_una.html" onclick="" >
+                <img id="idimg1" src="" width="150" height="150">
+                <h2  id="titulo1"></h2>
+                <p id="txtt1"></p>
+
+            </a>
+			</li>
+
+			<br>
+			
+			<li id="li2" style="">
+			<a id="link2" href="">
+                <img id="idimg2" src="" width="150" height="150">
+                <h2  id="titulo2"></h2>
+                <p id="txtt2"></p>
+
+            </a>
+			</li>
+
+			<br>
+			
+
+			<li id="li3" style="">
+			<a id="link3" href="">
+                <img id="idimg3" src="" width="150" height="150">
+                <h2  id="titulo3"></h2>
+                <p id="txtt3"></p>
+
+            </a>
+			</li>
+
+			<br>
+			
+			
+			<li id="li4" style="">
+			<a id="link4" href="">
+                <img id="idimg4" src="" width="150" height="150">
+                <h2  id="titulo4"></h2>
+                <p id="txtt4"></p>
+
+            </a>
+			</li>
+
+			<br>			
+			
+			
+			<li id="li5" style="">
+			<a id="link5" href="">
+                <img id="idimg5" src="" width="150" height="150">
+                <h2  id="titulo5"></h2>
+                <p id="txtt5"></p>
+
+            </a>
+			</li>
+
+			<br>			
+			
+			
+			<li id="li6" style="">
+			<a id="link6" href="">
+                <img id="idimg6" src="" width="150" height="150">
+                <h2  id="titulo6"></h2>
+                <p id="txtt6"></p>
+
+            </a>
+			</li>
+
+			<br><br>			
+			
+			
+			
+			
+			
+
+
+        </ul>
+			
+			
+			
+
+	        
+        </div>
+
+    </div>
+    
+    <script src="js/nativedroid.script.js"></script>
+    </body>
+</html>
